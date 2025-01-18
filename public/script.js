@@ -23,11 +23,15 @@ document.addEventListener('DOMContentLoaded', () => {
         resultsList.innerHTML = '';
         data.forEach((item, index) => {
             const li = document.createElement('li');
-            const a = document.createElement('a');
+            const div = document.createElement('div');
+            const spanTitle = document.createElement('span');
+            const spanBook = document.createElement('span');
             const itemPath = item.pdfPath.replace(/^.*\//, '');
-            a.href = '#';
-            a.textContent = `${item.title} (${itemPath})`;
-            a.onclick = (e) => {
+            spanTitle.className = 'title';
+            spanBook.className = 'book';
+            spanTitle.textContent = `${item.title}`;
+            spanBook.textContent = `${itemPath}`;
+            div.onclick = (e) => {
                 e.preventDefault();
                 openPDF(item.pdfPath, item.page);
             };
@@ -41,7 +45,9 @@ document.addEventListener('DOMContentLoaded', () => {
             };
             
             
-            li.appendChild(a);
+            div.appendChild(spanTitle);
+            div.appendChild(spanBook);
+            li.appendChild(div);
             li.appendChild(deleteButton);
             resultsList.appendChild(li);
         });

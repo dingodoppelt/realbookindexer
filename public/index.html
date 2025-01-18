@@ -2,18 +2,36 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <style>
+    * {
+      font-family: sans;
+    }
+    ul {
+      list-style-type: none;
+      padding: 0;
+    }
+    div {
+      border: solid 1px;
+      cursor: pointer;
+    }
+    .title {
+      display: block;
+    }
+    .book {
+      font-size: 60%;
+    }
+    </style>
     <title>Music Notes Library</title>
     <script src="script.js" defer></script>
 </head>
 <body>
-<form id="addMusicForm">
-  <input type="text" id="title" name="title" placeholder="Title" required>
-  <input type="text" id="pdfPath" name="pdfPath" placeholder="PDF Path" required>
-  <input type="number" id="page" name="page" placeholder="Page Number" required>
-  <button type="submit">Add Music Piece</button>
-</form>
-
+    <form id="addMusicForm">
+      <input type="text" id="title" name="title" placeholder="Title" required>
+      <input type="text" id="pdfPath" name="pdfPath" placeholder="PDF Path" required>
+      <input type="number" id="page" name="page" placeholder="Page Number" required>
+      <button type="submit">Add Music Piece</button>
+    </form>
     <h1>Music Notes Library</h1>
     <input type="text" id="search" placeholder="Search...">
     <ul id="results"></ul>
