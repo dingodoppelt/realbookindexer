@@ -1,12 +1,14 @@
 const express = require('express');
 const fs = require('fs').promises;
+const fsSync = require('fs');
 const path = require('path');
+const os = require('os');
 const { exec } = require('child_process');
 
 const app = express();
 const port = 3300;
 const host = '0.0.0.0';
-const dataFile = 'musicnotes.json';
+const dataFile = getOrCreateFilePath();
 
 app.use(express.json());
 app.use(express.static('public'));
@@ -79,3 +81,19 @@ app.delete('/delete/:index', async (req, res) => {
 app.listen(port, host, () => {
     console.log(`Server running on http://${host}:${port}`);
 });
+
+function getOrCreateFilePath() {
+  const filePath = path.join(os.homedir(), '.config', 'realbook-indexer', 'musicnotes.json');
+  const initialContent = JSON.stringify({ pieces: [] }, null, 2);
+
+  if (!fsSync.existsSync(path.dirname(filePath))) {
+    fsSync.mkdirSync(path.dirname(filePath), { recursive: true });
+  }
+
+  if (!fsSync.existsSync(filePath)) {
+    fsSync.writeFileSync(filePath, initialContent);
+    console.log('Datei erfolgreich erstellt');
+  }
+  console.log(filePath);
+  return filePath;
+}
