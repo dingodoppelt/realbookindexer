@@ -2,38 +2,57 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=5.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
     * {
       font-family: sans;
+      font-size: 101%;
+    }
+    .container {
+      display: flex;
+      flex-direction: column;
+      max-width: 800px;
+      margin: auto;
     }
     ul {
       list-style-type: none;
       padding: 0;
     }
-    div {
+    .item {
       border: solid 1px;
       cursor: pointer;
+      margin-top: 5px;
+      padding: 5px;
     }
     .title {
       display: block;
+      font-size: 130%;
     }
     .book {
-      font-size: 60%;
+      font-size: 90%;
     }
     </style>
     <title>Music Notes Library</title>
     <script src="script.js" defer></script>
 </head>
 <body>
-    <form id="addMusicForm">
-      <input type="text" id="title" name="title" placeholder="Title" required>
-      <input type="text" id="pdfPath" name="pdfPath" placeholder="PDF Path" required>
-      <input type="number" id="page" name="page" placeholder="Page Number" required>
-      <button type="submit">Add Music Piece</button>
-    </form>
-    <h1>Music Notes Library</h1>
+  <div class="container">
+    <details>
+      <summary>Add a Tune</summary>
+      <form id="addMusicForm">
+        <input type="text" id="title" name="title" placeholder="Title" required>
+        <input type="text" id="pdfPath" name="pdfPath" placeholder="PDF Path" required>
+        <input type="number" id="page" name="page" placeholder="Page Number" required>
+        <button type="submit">Add Music Piece</button>
+      </form>
+    </details>
+    <label>
+      <input type="checkbox" id="remove">
+      check to remove tunes
+    </label>
+    <hr>
     <input type="text" id="search" placeholder="Search...">
     <ul id="results"></ul>
+  </div>
 </body>
 </html>

@@ -1,6 +1,7 @@
 document.addEventListener('DOMContentLoaded', () => {
     const searchInput = document.getElementById('search');
     const resultsList = document.getElementById('results');
+    const removeCheckbox = document.getElementById('remove');
     let allData = [];
     
     fetch('/data')
@@ -29,6 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const itemPath = item.pdfPath.replace(/^.*\//, '');
             spanTitle.className = 'title';
             spanBook.className = 'book';
+            div.className = 'item';
             spanTitle.textContent = `${item.title}`;
             spanBook.textContent = `${itemPath}`;
             div.onclick = (e) => {
@@ -48,7 +50,9 @@ document.addEventListener('DOMContentLoaded', () => {
             div.appendChild(spanTitle);
             div.appendChild(spanBook);
             li.appendChild(div);
-            li.appendChild(deleteButton);
+            if (removeCheckbox.checked) {
+                li.appendChild(deleteButton);
+            }
             resultsList.appendChild(li);
         });
     }
