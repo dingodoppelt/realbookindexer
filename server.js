@@ -4,7 +4,7 @@ const path = require('path');
 const { exec } = require('child_process');
 
 const app = express();
-const port = 3000;
+const port = 3300;
 const host = '0.0.0.0';
 const dataFile = 'musicnotes.json';
 
